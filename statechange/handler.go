@@ -1,7 +1,7 @@
 package statechange
 
 import (
-	"github.com/edwardbrowncross/coffeemaker/data"
+	"github.com/edwardbrowncross/coffeemaker-server/data"
 	log "github.com/sirupsen/logrus"
 )
 

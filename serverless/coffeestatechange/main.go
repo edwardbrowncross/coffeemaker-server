@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/edwardbrowncross/coffeemaker/config"
-	"github.com/edwardbrowncross/coffeemaker/slack"
-	"github.com/edwardbrowncross/coffeemaker/statechange"
+	"github.com/edwardbrowncross/coffeemaker-server/config"
+	"github.com/edwardbrowncross/coffeemaker-server/slack"
+	"github.com/edwardbrowncross/coffeemaker-server/statechange"
 	log "github.com/sirupsen/logrus"
 )
 
