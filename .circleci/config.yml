@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: welldigital/serverless-build:golang
+        environment:
+          GOPATH: /go
+    working_directory: /go/src/github.com/edwardbrowncross/coffeemaker-server
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Get
+          command: make get
+      - run:
+          name: Run unit tests
+          command: make test
+      - run:
+          name: Build binaries
+          command: make build
+      - deploy:
+          name: Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              make deploy-dev
+            fi
+            if [ "${CIRCLE_BRANCH}" == "prod" ]; then
+              make deploy-prod
+            fi
