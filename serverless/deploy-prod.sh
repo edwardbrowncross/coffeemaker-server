@@ -1,2 +1,2 @@
-aws s3 cp s3://$ENV_BUCKET . --recursive
+aws s3 sync s3://$ENV_BUCKET .
 serverless deploy --stage=prod
