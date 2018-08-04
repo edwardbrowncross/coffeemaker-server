@@ -1,0 +1,26 @@
+service: coffee-maker
+
+provider:
+  name: aws
+  runtime: go1.x
+  stage: dev
+  region: eu-west-2
+  memorySize: 128
+  timeout: 10
+  environment:
+    SLACK_WEBHOOK: ${file(./serverless.env.yml):${opt:stage, self:provider.stage}.SLACK_WEBHOOK}
+    THING_NAME: ${file(./serverless.env.yml):${opt:stage, self:provider.stage}.THING_NAME}
+
+functions:
+  notifier:
+    handler: bin/coffeestatechange
+    events:
+      - iot:
+          sql: "SELECT * FROM '$aws/things/${file(./serverless.env.yml):${opt:stage, self:provider.stage}.THING_NAME}/shadow/update/accepted' WHERE isUndefined(state.reported.coffee) = false"
+          sqlVersion: "beta"
+
+package:
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
