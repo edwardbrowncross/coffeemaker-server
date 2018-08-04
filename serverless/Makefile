@@ -2,7 +2,7 @@ build:
 	bash build.sh
 
 deploy-dev:
-	serverless deploy --stage=dev
+	bash deploy-dev.sh
 
 deploy-prod:
-	serverless deploy --stage=prod
+	bash deploy-prod.sh
