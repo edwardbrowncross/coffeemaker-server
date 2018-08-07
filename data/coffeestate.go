@@ -10,7 +10,6 @@ type CoffeeState struct {
 	CoffeeState  string    `json:"coffee"`
 	CoffeeWeight int64     `json:"coffeeWeight"`
 	LastBrewTime time.Time `json:"lastBrewTime"`
-	RawWeight    int64     `json:"_rawWeight"`
 }
 
 func (c *CoffeeState) GetCupsRemaining() int {
