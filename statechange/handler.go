@@ -28,7 +28,7 @@ func (h *Handler) Handle(event data.Payload) error {
 	switch state {
 	case "brewed":
 		log.Info("sending brewed slack message")
-		err := h.SlackSender("Coffee is ready!")
+		err := h.SlackSender(":coffee: Coffee is ready!")
 		if err != nil {
 			log.WithError(err).Error("failed to send brewed slack message")
 		}
