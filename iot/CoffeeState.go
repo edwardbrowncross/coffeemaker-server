@@ -44,11 +44,11 @@ func (cs *CoffeeState) Get() (state data.CoffeeState, err error) {
 		return state, fmt.Errorf("failed to get thing shadow: %v", err)
 	}
 
-	var shadow data.IOTState
-	err = json.Unmarshal(res.Payload, &shadow)
+	var payload data.Payload
+	err = json.Unmarshal(res.Payload, &payload)
 	if err != nil {
 		return state, fmt.Errorf("failed to unmarshall shadow document: %v", err)
 	}
-	state = shadow.Reported
+	state = payload.State.Reported
 	return
 }
