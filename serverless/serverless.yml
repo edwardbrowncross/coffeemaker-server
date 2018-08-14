@@ -8,6 +8,8 @@ provider:
   memorySize: 128
   timeout: 10
   environment:
+    AWS_REGION: ${file(./serverless.env.yml):${opt:stage, self:provider.stage}.AWS_REGION}
+    IOT_ENDPOINT: ${file(./serverless.env.yml):${opt:stage, self:provider.stage}.IOT_ENDPOINT}
     SLACK_WEBHOOK: ${file(./serverless.env.yml):${opt:stage, self:provider.stage}.SLACK_WEBHOOK}
     THING_NAME: ${file(./serverless.env.yml):${opt:stage, self:provider.stage}.THING_NAME}
 
@@ -21,7 +23,7 @@ functions:
   slackwebhook:
     handler: bin/slackwebhook
     events:
-      - http: POST slackwebhook
+      - http: POST slackwebhookq
 
 package:
   exclude:

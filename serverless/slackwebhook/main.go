@@ -12,7 +12,7 @@ import (
 func main() {
 	log.SetFormatter(&log.JSONFormatter{})
 	c := config.FromEnvironment()
-	cs := iot.NewCoffeeState(c.ThingName)
+	cs := iot.NewCoffeeState(c.Region, c.IOTEndpoint, c.ThingName)
 	h := slackwebhook.NewHandler(cs.Get, chat.GetResponse)
 	lambda.Start(h.Handle)
 }
