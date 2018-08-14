@@ -11,6 +11,11 @@ provider:
     IOT_ENDPOINT: ${file(./serverless.env.yml):${opt:stage, self:provider.stage}.IOT_ENDPOINT}
     SLACK_WEBHOOK: ${file(./serverless.env.yml):${opt:stage, self:provider.stage}.SLACK_WEBHOOK}
     THING_NAME: ${file(./serverless.env.yml):${opt:stage, self:provider.stage}.THING_NAME}
+  iamRoleStatements:
+    -  Effect: "Allow"
+       Action:
+         - "iot:GetThingShadow"
+       Resource: "arn:aws:iot:::thing/${file(./serverless.env.yml):${opt:stage, self:provider.stage}.THING_NAME}"
 
 functions:
   notifier:
