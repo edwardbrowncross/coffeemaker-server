@@ -11,3 +11,11 @@ type CoffeeState struct {
 	CoffeeWeight int64     `json:"coffeeWeight"`
 	LastBrewTime time.Time `json:"lastBrewTime"`
 }
+
+func (c *CoffeeState) GetCupsRemaining() int {
+	return int(c.CoffeeWeight / 250.0)
+}
+
+func (c *CoffeeState) GetTimeSinceLastBrew() time.Duration {
+	return time.Now().Sub(c.LastBrewTime)
+}
