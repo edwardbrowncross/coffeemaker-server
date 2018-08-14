@@ -18,6 +18,10 @@ functions:
       - iot:
           sql: "SELECT * FROM '$aws/things/${file(./serverless.env.yml):${opt:stage, self:provider.stage}.THING_NAME}/shadow/update/accepted' WHERE isUndefined(state.reported.coffee) = false"
           sqlVersion: "beta"
+  slackwebhook:
+    handler: bin/slackwebhook
+    events:
+      - http: POST slackwebhook
 
 package:
   exclude:
