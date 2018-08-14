@@ -2,3 +2,4 @@ serverless/serverless.env.yml
 .serverless
 serverless/bin
 .vscode
+.vs
