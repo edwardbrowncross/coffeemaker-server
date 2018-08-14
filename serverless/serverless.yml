@@ -21,8 +21,9 @@ functions:
           sqlVersion: "beta"
   slackwebhook:
     handler: bin/slackwebhook
+    timeout: 3
     events:
-      - http: POST slackwebhookq
+      - http: POST slackwebhook
 
 package:
   exclude:
