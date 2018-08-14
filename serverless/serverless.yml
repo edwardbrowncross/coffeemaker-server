@@ -15,7 +15,7 @@ provider:
     -  Effect: "Allow"
        Action:
          - "iot:GetThingShadow"
-       Resource: "arn:aws:iot:::thing/${file(./serverless.env.yml):${opt:stage, self:provider.stage}.THING_NAME}"
+       Resource: "arn:aws:iot:*:*:thing/${file(./serverless.env.yml):${opt:stage, self:provider.stage}.THING_NAME}"
 
 functions:
   notifier:
