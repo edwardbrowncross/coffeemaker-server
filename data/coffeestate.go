@@ -14,7 +14,7 @@ type CoffeeState struct {
 }
 
 func (c *CoffeeState) GetCupsRemaining() int {
-	return int(c.CoffeeWeight / 250.0)
+	return int((c.CoffeeWeight + 125) / 250.0)
 }
 
 func (c *CoffeeState) GetTimeSinceLastBrew() time.Duration {
