@@ -34,7 +34,7 @@ func TestGetResponse(t *testing.T) {
 				CoffeeState:  "brewed",
 				JugPresent:   true,
 				Heating:      true,
-				CoffeeWeight: 250,
+				CoffeeWeight: 200,
 				LastBrewTime: time.Now().Add(-10 * time.Minute),
 			},
 			response: "There is 1 cup of fresh coffee left. It was made just now.",
