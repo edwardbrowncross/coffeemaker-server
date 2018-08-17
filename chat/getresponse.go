@@ -51,9 +51,8 @@ func getWereWas(n int) string {
 func getCups(n int) string {
 	if n == 1 {
 		return "1 cup"
-	} else {
-		return fmt.Sprintf("%d cups", n)
 	}
+	return fmt.Sprintf("%d cups", n)
 }
 
 func getCoffeeDescription(s string) string {
@@ -80,7 +79,6 @@ func getTimeString(t time.Time) string {
 		return "yesterday"
 	} else if hours >= 168 || time.Now().Weekday() < t.Weekday() {
 		return "last week"
-	} else {
-		return fmt.Sprintf("%d days ago", hours/24)
 	}
+	return fmt.Sprintf("%d days ago", hours/24)
 }
