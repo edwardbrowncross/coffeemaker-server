@@ -13,6 +13,8 @@ func GetResponse(coffee data.CoffeeState) string {
 		return "Someone is making coffee right now."
 	} else if coffee.CoffeeState == "brewing" {
 		return fmt.Sprintf("Coffee is brewing. It will be ready in %d minutes.", 9-coffee.GetTimeSinceLastBrew()/time.Minute)
+	} else if coffee.CoffeeState == "off" {
+		return "Coffee machine is off. Why not make some coffee?"
 	} else if coffee.GetCupsRemaining() < 1 {
 		return "There is no coffee left. Why not make some more?"
 	} else if coffee.GetTimeSinceLastBrew()/time.Hour > 12 {
