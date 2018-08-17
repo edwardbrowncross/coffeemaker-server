@@ -13,6 +13,8 @@ func GetResponse(coffee data.CoffeeState) string {
 		return "Someone is making coffee right now."
 	} else if coffee.CoffeeState == "brewing" {
 		return fmt.Sprintf("Coffee is brewing. It will be ready in %d minutes.", 9-coffee.GetTimeSinceLastBrew()/time.Minute)
+	} else if coffee.CoffeeState == "off" {
+		return "Coffee machine is off. Why not make some coffee?"
 	} else if coffee.GetCupsRemaining() < 1 {
 		return "There is no coffee left. Why not make some more?"
 	} else if coffee.GetTimeSinceLastBrew()/time.Hour > 12 {
@@ -49,9 +51,8 @@ func getWereWas(n int) string {
 func getCups(n int) string {
 	if n == 1 {
 		return "1 cup"
-	} else {
-		return fmt.Sprintf("%d cups", n)
 	}
+	return fmt.Sprintf("%d cups", n)
 }
 
 func getCoffeeDescription(s string) string {
@@ -78,7 +79,6 @@ func getTimeString(t time.Time) string {
 		return "yesterday"
 	} else if hours >= 168 || time.Now().Weekday() < t.Weekday() {
 		return "last week"
-	} else {
-		return fmt.Sprintf("%d days ago", hours/24)
 	}
+	return fmt.Sprintf("%d days ago", hours/24)
 }

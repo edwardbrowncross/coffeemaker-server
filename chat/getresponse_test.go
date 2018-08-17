@@ -16,7 +16,15 @@ func TestGetResponse(t *testing.T) {
 			input: data.CoffeeState{
 				CoffeeState:  "off",
 				JugPresent:   true,
-				CoffeeWeight: 100,
+				CoffeeWeight: 400,
+			},
+			response: "Coffee machine is off. Why not make some coffee?",
+		},
+		{
+			input: data.CoffeeState{
+				CoffeeState:  "stale",
+				JugPresent:   true,
+				CoffeeWeight: 90,
 			},
 			response: "There is no coffee left. Why not make some more?",
 		},
@@ -24,7 +32,7 @@ func TestGetResponse(t *testing.T) {
 			input: data.CoffeeState{
 				CoffeeState:  "stale",
 				JugPresent:   true,
-				CoffeeWeight: 520,
+				CoffeeWeight: 490,
 				LastBrewTime: time.Now().Add(-2 * time.Hour),
 			},
 			response: "There are 2 cups of stale coffee left. It was made 2 hours ago.",
@@ -57,7 +65,7 @@ func TestGetResponse(t *testing.T) {
 				CoffeeWeight: 800,
 				LastBrewTime: time.Now().Add(-30 * time.Minute),
 			},
-			response: "There were 3 cups of fresh coffee left, but someone's taking some right now. Don't delay!",
+			response: "There were 4 cups of fresh coffee left, but someone's taking some right now. Don't delay!",
 		},
 		{
 			input: data.CoffeeState{
